@@ -17,7 +17,7 @@ struct Episode {
     let domain: String
     let difficulty: String
     let videoURLString: String
-    let uri: String
+    let uri: String // redirects to the real web page
     var linkURLString: String {
         "https://www.raywenderlich.com/redirect?uri=" + uri
     }

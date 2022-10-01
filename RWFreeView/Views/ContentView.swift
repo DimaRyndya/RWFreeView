@@ -22,7 +22,10 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(store.episodes, id: \.name) { episode in
-                NavigationLink(destination: PlayerView(episode: episode)) {
+//                NavigationLink(destination: PlayerView(episode: episode)) {
+//                    EpisodeView(episode: episode)
+//                }
+                Link(destination: URL(string: episode.linkURLString)!) {
                     EpisodeView(episode: episode)
                 }
             }

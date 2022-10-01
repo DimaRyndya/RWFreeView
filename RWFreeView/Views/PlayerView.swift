@@ -50,7 +50,9 @@ struct PlayView_Previews: PreviewProvider {
     static var previews: some View {
         let store = EpisodeStore()
         Group {
-            PlayerView(episode: store.episodes[0])
+            NavigationView {
+                PlayerView(episode: store.episodes[0])
+            }
             PlayerView(episode: store.episodes[0])
                 .previewLayout(.fixed(width: 896.0, height: 414.0))
         }
