@@ -22,25 +22,28 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(store.episodes, id: \.name) { episode in
-                NavigationLink(destination: PlayerView(episode: episode)) {
-                    EpisodeView(episode: episode)
+            List {
+                HeaderView(count: store.episodes.count)
+                ForEach(store.episodes, id: \.name) { episode in
+                    NavigationLink(destination: PlayerView(episode: episode)) {
+                        EpisodeView(episode: episode)
+                    }
                 }
-
             }
             .navigationTitle("Videos")
             .toolbar {
-              ToolbarItem {
-                  Button(action: { showFilters.toggle() }) {
-                  Image(systemName: "line.horizontal.3.decrease.circle")
-                    .accessibilityLabel(Text("Shows filter options"))
+                ToolbarItem {
+                    Button(action: { showFilters.toggle() }) {
+                        Image(systemName: "line.horizontal.3.decrease.circle")
+                            .accessibilityLabel(Text("Shows filter options"))
+                    }
                 }
-              }
             }
             .sheet(isPresented: $showFilters) {
                 FilterOptionsView()
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
