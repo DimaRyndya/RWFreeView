@@ -23,7 +23,6 @@ struct HeaderView: View {
                   Button("30 results/page") { }
                   Button("No change") { }
                 }
-
                 Spacer()
                 Picker("", selection: $sortOn) {
                     Text("New").tag("new")

@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var store = EpisodeStore()
     @State private var showFilters = false
-
+    
     init() {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColor(named: "top-bkgd")
@@ -18,16 +18,26 @@ struct ContentView: View {
         UISegmentedControl.appearance()
             .selectedSegmentTintColor = UIColor(named: "list-bkgd")
     }
-
+    
     
     var body: some View {
         NavigationView {
             List {
                 HeaderView(count: store.episodes.count)
                 ForEach(store.episodes, id: \.name) { episode in
-                    NavigationLink(destination: PlayerView(episode: episode)) {
+                    ZStack {
+                        NavigationLink(destination: PlayerView(episode: episode)) {
+                        }
                         EpisodeView(episode: episode)
                     }
+                    .frame(
+                        maxWidth: .infinity,
+                        maxHeight: .infinity,
+                        alignment: .leading)
+                    .listRowInsets(EdgeInsets())
+                    .padding(.bottom, 8)
+                    .padding([.leading, .trailing], 20)
+                    .background(Color.listBkgd)
                 }
             }
             .navigationTitle("Videos")

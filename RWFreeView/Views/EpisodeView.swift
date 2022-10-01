@@ -23,6 +23,10 @@ struct EpisodeView: View {
             .font(.footnote)
             .foregroundColor(Color(UIColor.systemGray))
         }
+        .padding(10)
+        .background(Color.itemBkgd)
+        .cornerRadius(15)
+        .shadow(color: Color.black.opacity(0.1), radius: 10)
     }
 }
 
