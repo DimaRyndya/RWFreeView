@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var store = EpisodeStore()
     @State private var showFilters = false
-    
+
     init() {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColor(named: "top-bkgd")
@@ -18,7 +18,7 @@ struct ContentView: View {
         UISegmentedControl.appearance()
             .selectedSegmentTintColor = UIColor(named: "list-bkgd")
     }
-    
+
     
     var body: some View {
         NavigationView {
@@ -27,7 +27,10 @@ struct ContentView: View {
                 ForEach(store.episodes, id: \.name) { episode in
                     ZStack {
                         NavigationLink(destination: PlayerView(episode: episode)) {
+                            EmptyView()
                         }
+                        .opacity(0)
+                        .buttonStyle(PlainButtonStyle())
                         EpisodeView(episode: episode)
                     }
                     .frame(
