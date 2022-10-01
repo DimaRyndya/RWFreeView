@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var store = EpisodeStore()
+    @State private var showFilters = false
 
     init() {
         let appearance = UINavigationBarAppearance()
@@ -22,14 +23,23 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(store.episodes, id: \.name) { episode in
-//                NavigationLink(destination: PlayerView(episode: episode)) {
-//                    EpisodeView(episode: episode)
-//                }
-                Link(destination: URL(string: episode.linkURLString)!) {
+                NavigationLink(destination: PlayerView(episode: episode)) {
                     EpisodeView(episode: episode)
                 }
+
             }
             .navigationTitle("Videos")
+            .toolbar {
+              ToolbarItem {
+                  Button(action: { showFilters.toggle() }) {
+                  Image(systemName: "line.horizontal.3.decrease.circle")
+                    .accessibilityLabel(Text("Shows filter options"))
+                }
+              }
+            }
+            .sheet(isPresented: $showFilters) {
+                FilterOptionsView()
+            }
         }
     }
 }
