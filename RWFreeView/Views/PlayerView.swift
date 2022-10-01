@@ -39,6 +39,8 @@ struct PlayerView: View {
                     }
                     Spacer()
                 }
+                .navigationTitle(episode.name)
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
     }
