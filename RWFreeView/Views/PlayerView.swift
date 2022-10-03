@@ -42,6 +42,8 @@ struct PlayerView: View {
                 .navigationTitle(episode.name)
                 .navigationBarTitleDisplayMode(.inline)
             }
+        } else {
+            PlaceholderView()
         }
     }
 }
@@ -71,4 +73,20 @@ extension View {
             )
             .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
     }
+}
+
+struct PlaceholderView: View {
+  var body: some View {
+    VStack {
+      Text("""
+        Placeholder episode
+        No video
+        """)
+        .font(.title)
+        .multilineTextAlignment(.center)
+        .padding(15)
+        .roundedGradientBackground()
+      Spacer()
+    }
+  }
 }
