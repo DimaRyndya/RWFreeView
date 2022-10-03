@@ -8,6 +8,7 @@ struct Episode: Decodable, Identifiable {
     let released: String
     let difficulty: String?
     let description: String  // description_plain_text
+    let parentName: String?
 
     var domain = ""  // relationships: domains: data: id
 
@@ -30,6 +31,7 @@ struct Episode: Decodable, Identifiable {
         case releasedAt = "released_at"
         case description = "description_plain_text"
         case videoIdentifier = "video_identifier"
+        case parentName = "parent_name"
     }
 
     struct Domains: Codable {

@@ -81,8 +81,8 @@ struct FilterOptionsView: View {
             }
         }
     }
-
 }
+
 
     struct FilterButtonStyle: ButtonStyle {
         let selected: Bool
