@@ -69,6 +69,14 @@ struct ContentView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .onOpenURL { url in
+          if let id = url.host,
+            let widgetEpisode = store.episodes.first(
+              where: { $0.id == id }) {
+            selectedEpisode = widgetEpisode
+          }
+        }
+
     }
 }
 
