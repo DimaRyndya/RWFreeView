@@ -1,4 +1,15 @@
 import Foundation
+import WidgetKit
+
+extension FileManager {
+    static func sharedContainerURL() -> URL {
+        return FileManager.default.containerURL(
+            forSecurityApplicationGroupIdentifier:
+                "group.com.dmitriyryndya.RWFreeView.episodes"
+        )!
+    }
+}
+
 
 final class EpisodeStore: ObservableObject, Decodable {
     @Published var episodes: [Episode] = []
@@ -78,6 +89,7 @@ final class EpisodeStore: ObservableObject, Decodable {
                 defer {
                     DispatchQueue.main.async {
                         self.loading = false
+                        WidgetCenter.shared.reloadTimelines(ofKind: "RWFreeViewWidget")
                     }
                 }
                 if let data = data,
