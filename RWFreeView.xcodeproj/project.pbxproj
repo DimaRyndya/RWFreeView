@@ -17,6 +17,11 @@
 		1D737A8128EAC9D60008CE9C /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D737A8028EAC9D60008CE9C /* ActivityIndicator.swift */; };
 		1D737A8328EACF3A0008CE9C /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D737A8228EACF3A0008CE9C /* Episode.swift */; };
 		1D737A8528EAD04E0008CE9C /* VideoURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D737A8428EAD04E0008CE9C /* VideoURL.swift */; };
+		1D737A8D28EB2D210008CE9C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D737A8C28EB2D200008CE9C /* WidgetKit.framework */; };
+		1D737A8F28EB2D210008CE9C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D737A8E28EB2D210008CE9C /* SwiftUI.framework */; };
+		1D737A9228EB2D210008CE9C /* RWFreeViewWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D737A9128EB2D210008CE9C /* RWFreeViewWidget.swift */; };
+		1D737A9428EB2D230008CE9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D737A9328EB2D230008CE9C /* Assets.xcassets */; };
+		1D737A9828EB2D230008CE9C /* RWFreeViewWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1D737A8A28EB2D200008CE9C /* RWFreeViewWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CD304C7125A2D34900FD0E2C /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD304C7025A2D34900FD0E2C /* PlayerView.swift */; };
 		CD34211A25A5771000817FD8 /* PlayButtonIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD34211925A5771000817FD8 /* PlayButtonIcon.swift */; };
 		CD34211F25A6BCDC00817FD8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD34211E25A6BCDC00817FD8 /* ColorExtension.swift */; };
@@ -27,6 +32,30 @@
 		CD9D2C0E25B130CB0085F28C /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D2C0D25B130CB0085F28C /* ViewExtension.swift */; };
 		CD9D2C2D25B145B50085F28C /* AdaptingStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D2C2C25B145B50085F28C /* AdaptingStack.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1D737A9628EB2D230008CE9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18D775B522AD944300AE281E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D737A8928EB2D200008CE9C;
+			remoteInfo = RWFreeViewWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1D737A9C28EB2D230008CE9C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1D737A9828EB2D230008CE9C /* RWFreeViewWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1839F4AF25190F2A00BB00F1 /* RWFreeViewApp.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = RWFreeViewApp.swift; sourceTree = "<group>"; usesTabs = 0; };
@@ -41,6 +70,12 @@
 		1D737A8028EAC9D60008CE9C /* ActivityIndicator.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		1D737A8228EACF3A0008CE9C /* Episode.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		1D737A8428EAD04E0008CE9C /* VideoURL.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = VideoURL.swift; sourceTree = "<group>"; };
+		1D737A8A28EB2D200008CE9C /* RWFreeViewWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RWFreeViewWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D737A8C28EB2D200008CE9C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		1D737A8E28EB2D210008CE9C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		1D737A9128EB2D210008CE9C /* RWFreeViewWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWFreeViewWidget.swift; sourceTree = "<group>"; };
+		1D737A9328EB2D230008CE9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1D737A9528EB2D230008CE9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD304C7025A2D34900FD0E2C /* PlayerView.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		CD34211925A5771000817FD8 /* PlayButtonIcon.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = PlayButtonIcon.swift; sourceTree = "<group>"; };
 		CD34211E25A6BCDC00817FD8 /* ColorExtension.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -60,6 +95,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1D737A8728EB2D200008CE9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D737A8F28EB2D210008CE9C /* SwiftUI.framework in Frameworks */,
+				1D737A8D28EB2D210008CE9C /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -67,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				18D775BF22AD944300AE281E /* RWFreeView */,
+				1D737A9028EB2D210008CE9C /* RWFreeViewWidget */,
+				1D737A8B28EB2D200008CE9C /* Frameworks */,
 				18D775BE22AD944300AE281E /* Products */,
 			);
 			indentWidth = 2;
@@ -77,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				18D775BD22AD944300AE281E /* RWFreeView.app */,
+				1D737A8A28EB2D200008CE9C /* RWFreeViewWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -107,6 +154,25 @@
 				18D775C922AD944400AE281E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1D737A8B28EB2D200008CE9C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D737A8C28EB2D200008CE9C /* WidgetKit.framework */,
+				1D737A8E28EB2D210008CE9C /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1D737A9028EB2D210008CE9C /* RWFreeViewWidget */ = {
+			isa = PBXGroup;
+			children = (
+				1D737A9128EB2D210008CE9C /* RWFreeViewWidget.swift */,
+				1D737A9328EB2D230008CE9C /* Assets.xcassets */,
+				1D737A9528EB2D230008CE9C /* Info.plist */,
+			);
+			path = RWFreeViewWidget;
 			sourceTree = "<group>";
 		};
 		CD34210C25A547F100817FD8 /* Supporting */ = {
@@ -143,15 +209,34 @@
 				18D775B922AD944300AE281E /* Sources */,
 				18D775BA22AD944300AE281E /* Frameworks */,
 				18D775BB22AD944300AE281E /* Resources */,
+				1D737A9C28EB2D230008CE9C /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1D737A9728EB2D230008CE9C /* PBXTargetDependency */,
 			);
 			name = RWFreeView;
 			productName = MyRWTutorial;
 			productReference = 18D775BD22AD944300AE281E /* RWFreeView.app */;
 			productType = "com.apple.product-type.application";
+		};
+		1D737A8928EB2D200008CE9C /* RWFreeViewWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D737A9928EB2D230008CE9C /* Build configuration list for PBXNativeTarget "RWFreeViewWidgetExtension" */;
+			buildPhases = (
+				1D737A8628EB2D200008CE9C /* Sources */,
+				1D737A8728EB2D200008CE9C /* Frameworks */,
+				1D737A8828EB2D200008CE9C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RWFreeViewWidgetExtension;
+			productName = RWFreeViewWidgetExtension;
+			productReference = 1D737A8A28EB2D200008CE9C /* RWFreeViewWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -159,12 +244,15 @@
 		18D775B522AD944300AE281E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Ray Wenderlich";
 				TargetAttributes = {
 					18D775BC22AD944300AE281E = {
 						CreatedOnToolsVersion = 11.0;
+					};
+					1D737A8928EB2D200008CE9C = {
+						CreatedOnToolsVersion = 14.0.1;
 					};
 				};
 			};
@@ -182,6 +270,7 @@
 			projectRoot = "";
 			targets = (
 				18D775BC22AD944300AE281E /* RWFreeView */,
+				1D737A8928EB2D200008CE9C /* RWFreeViewWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -194,6 +283,14 @@
 				18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */,
 				18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */,
 				18D775C722AD944400AE281E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D737A8828EB2D200008CE9C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D737A9428EB2D230008CE9C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +341,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1D737A8628EB2D200008CE9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D737A9228EB2D210008CE9C /* RWFreeViewWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1D737A9728EB2D230008CE9C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D737A8928EB2D200008CE9C /* RWFreeViewWidgetExtension */;
+			targetProxy = 1D737A9628EB2D230008CE9C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		18D775DA22AD963800AE281E /* LaunchScreen.storyboard */ = {
@@ -377,6 +490,7 @@
 		18D775D222AD944400AE281E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "RWFreeView/Preview\\ Content";
@@ -397,6 +511,7 @@
 		18D775D322AD944400AE281E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "RWFreeView/Preview\\ Content";
@@ -409,6 +524,64 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.RWFreeView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1D737A9A28EB2D230008CE9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RWFreeViewWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RWFreeViewWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Ray Wenderlich. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.RWFreeView.RWFreeViewWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1D737A9B28EB2D230008CE9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RWFreeViewWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RWFreeViewWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Ray Wenderlich. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.RWFreeView.RWFreeViewWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -431,6 +604,15 @@
 			buildConfigurations = (
 				18D775D222AD944400AE281E /* Debug */,
 				18D775D322AD944400AE281E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1D737A9928EB2D230008CE9C /* Build configuration list for PBXNativeTarget "RWFreeViewWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D737A9A28EB2D230008CE9C /* Debug */,
+				1D737A9B28EB2D230008CE9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
