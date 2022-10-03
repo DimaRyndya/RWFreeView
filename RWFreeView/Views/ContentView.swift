@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var store: EpisodeStore
     @State private var showFilters = false
+    @State private var selectedEpisode: Episode?
     
     init() {
         let appearance = UINavigationBarAppearance()
@@ -29,12 +30,18 @@ struct ContentView: View {
                 }
                 ForEach(store.episodes) { episode in
                     ZStack {
-                        NavigationLink(destination: PlayerView(episode: episode)) {
-                            EmptyView()
-                        }
-                        .opacity(0)
-                        .buttonStyle(PlainButtonStyle())
+                        NavigationLink(
+                            destination: PlayerView(episode: episode),
+                            tag: episode,
+                            selection: $selectedEpisode) {
+                                EmptyView()
+                            }
+                            .opacity(0)
+                            .buttonStyle(PlainButtonStyle())
                         EpisodeView(episode: episode)
+                            .onTapGesture {
+                                selectedEpisode = episode
+                            }
                     }
                     .frame(
                         maxWidth: .infinity,

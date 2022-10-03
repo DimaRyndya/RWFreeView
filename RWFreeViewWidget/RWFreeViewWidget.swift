@@ -108,7 +108,7 @@ struct RWFreeViewWidgetEntryView : View {
         .background(Color.itemBkgd)
         .font(.footnote)
         .foregroundColor(Color(UIColor.systemGray))
-
+        .widgetURL(URL(string: "rwfreeview://\(entry.episode.id)"))
     }
 }
 

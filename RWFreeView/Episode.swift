@@ -105,3 +105,12 @@ struct MiniEpisode: Codable {
   let description: String
 }
 
+extension Episode: Hashable {
+  static func == (lhs: Episode, rhs: Episode) -> Bool {
+    lhs.id == rhs.id
+  }
+
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(id)
+  }
+}
