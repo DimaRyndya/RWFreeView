@@ -3,7 +3,7 @@ import SwiftUI
 struct HeaderView: View {
     let count: Int
     @State private var queryTerm = ""
-    @State private var sortOn = "popular"
+    @State private var sortOn = "none"
     @EnvironmentObject var store: EpisodeStore
     
     var body: some View {
@@ -19,9 +19,18 @@ struct HeaderView: View {
             HStack {
                 Text("\(count) Episodes")
                 Menu("\(Image(systemName: "filemenu.and.cursorarrow"))") {
-                    Button("10 results/page") { }
-                    Button("20 results/page") { }
-                    Button("30 results/page") { }
+                    Button("10 results/page") {
+                        store.baseParams["page[size]"] = "10"
+                        store.fetchContents()
+                    }
+                    Button("20 results/page") {
+                        store.baseParams["page[size]"] = "20"
+                        store.fetchContents()
+                    }
+                    Button("30 results/page") {
+                        store.baseParams["page[size]"] = "30"
+                        store.fetchContents()
+                    }
                     Button("No change") { }
                 }
                 Spacer()
@@ -32,6 +41,12 @@ struct HeaderView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .frame(maxWidth: 130)
                 .background(Color.gray.opacity(0.8))
+                .onChange(of: sortOn) { _ in
+                    store.baseParams["sort"] = sortOn == "new" ?
+                    "-released_at" : "-popularity"
+                    store.fetchContents()
+                }
+
             }
             .foregroundColor(Color.white.opacity(0.6))
         }
@@ -51,6 +66,7 @@ struct HeaderView: View {
 
 struct SearchField: View {
     @Binding var queryTerm: String
+    @EnvironmentObject var store: EpisodeStore
     
     var body: some View {
         ZStack(alignment: .leading) {
@@ -58,7 +74,15 @@ struct SearchField: View {
                 Text("\(Image(systemName: "magnifyingglass")) Search videos")
                     .foregroundColor(Color.white.opacity(0.6))
             }
-            TextField("", text: $queryTerm)
+            TextField(
+                "",
+                text: $queryTerm,
+                onEditingChanged: { _ in },
+                onCommit: {
+                    store.baseParams["filter[q]"] = queryTerm
+                    store.fetchContents()
+                }
+            )
         }
         .padding(10)
         .background(
