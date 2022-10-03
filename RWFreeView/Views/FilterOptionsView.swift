@@ -10,6 +10,7 @@ struct FilterOptionsView: View {
                 Spacer()
                 Button(
                     action: {
+                        store.fetchContents()
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Image(systemName: "xmark")
@@ -40,68 +41,69 @@ struct FilterOptionsView: View {
                                     .buttonStyle(FilterButtonStyle(selected: store.domainFilters["2"]!, width: nil))
                                 Button("macOS") { store.domainFilters["5"]!.toggle() }
                                     .buttonStyle(FilterButtonStyle(selected: store.domainFilters["5"]!, width: nil))
-                                AdaptingStack {
-                                    Button("Server-Side Swift") { store.domainFilters["8"]!.toggle() }
-                                        .buttonStyle(FilterButtonStyle(selected: store.domainFilters["8"]!, width: nil))
-                                    Button("Unity") { store.domainFilters["3"]!.toggle() }
-                                        .buttonStyle(FilterButtonStyle(selected: store.domainFilters["3"]!, width: nil))
-                                    Button("Flutter") { store.domainFilters["9"]!.toggle() }
-                                        .buttonStyle(FilterButtonStyle(selected: store.domainFilters["9"]!, width: nil))
-                                }
-                                .padding(.bottom)
                             }
-                        }
-                        VStack(alignment: .leading) {
-                            Text("Difficulty")
-                                .font(.title2)
-                                .padding(.vertical)
                             AdaptingStack {
-                                Button("Beginner") { store.difficultyFilters["beginner"]!.toggle() }
-                                    .buttonStyle(FilterButtonStyle(selected: store.difficultyFilters["beginner"]!, width: nil))
-                                Button("Intermediate") { store.difficultyFilters["intermediate"]!.toggle() }
-                                    .buttonStyle(FilterButtonStyle(selected: store.difficultyFilters["intermediate"]!, width: nil))
-                                Button("Advanced") { store.difficultyFilters["advanced"]!.toggle() }
-                                    .buttonStyle(FilterButtonStyle(selected: store.difficultyFilters["advanced"]!, width: nil))
+                                Button("Server-Side Swift") { store.domainFilters["8"]!.toggle() }
+                                    .buttonStyle(FilterButtonStyle(selected: store.domainFilters["8"]!, width: nil))
+                                Button("Unity") { store.domainFilters["3"]!.toggle() }
+                                    .buttonStyle(FilterButtonStyle(selected: store.domainFilters["3"]!, width: nil))
+                                Button("Flutter") { store.domainFilters["9"]!.toggle() }
+                                    .buttonStyle(FilterButtonStyle(selected: store.domainFilters["9"]!, width: nil))
                             }
                             .padding(.bottom)
                         }
                     }
-                    Spacer()
-                    HStack {
-                        Button("Clear All") { }
-                            .buttonStyle(FilterButtonStyle(selected: false, width: 160))
-                        Button("Apply") {
-                            presentationMode.wrappedValue.dismiss()
+                    VStack(alignment: .leading) {
+                        Text("Difficulty")
+                            .font(.title2)
+                            .padding(.vertical)
+                        AdaptingStack {
+                            Button("Beginner") { store.difficultyFilters["beginner"]!.toggle() }
+                                .buttonStyle(FilterButtonStyle(selected: store.difficultyFilters["beginner"]!, width: nil))
+                            Button("Intermediate") { store.difficultyFilters["intermediate"]!.toggle() }
+                                .buttonStyle(FilterButtonStyle(selected: store.difficultyFilters["intermediate"]!, width: nil))
+                            Button("Advanced") { store.difficultyFilters["advanced"]!.toggle() }
+                                .buttonStyle(FilterButtonStyle(selected: store.difficultyFilters["advanced"]!, width: nil))
                         }
-                        .buttonStyle(FilterButtonStyle(selected: true, width: 160))
+                        .padding(.bottom)
                     }
-                    .padding(.bottom)
-                    .font(.title2)
                 }
+                Spacer()
+                HStack {
+                    Button("Clear All") { store.clearQueryFilters() }
+                        .buttonStyle(FilterButtonStyle(selected: false, width: 160))
+                    Button("Apply") {
+                        store.fetchContents()
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                    .buttonStyle(FilterButtonStyle(selected: true, width: 160))
+                }
+                .padding(.bottom)
+                .font(.title2)
             }
         }
     }
 }
 
-
-    struct FilterButtonStyle: ButtonStyle {
-        let selected: Bool
-        let width: CGFloat?
-
-        func makeBody(configuration: Self.Configuration) -> some View {
-            configuration.label
-                .foregroundColor(.white)
-                .frame(width: width)
-                .padding(7)
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(selected ? Color.greenButton : Color.grayButton)
-                )
-        }
+struct FilterButtonStyle: ButtonStyle {
+    let selected: Bool
+    let width: CGFloat?
+    
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .foregroundColor(.white)
+            .frame(width: width)
+            .padding(7)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(selected ? Color.greenButton : Color.grayButton)
+            )
     }
+}
 
-    struct FilterOptionsView_Previews: PreviewProvider {
-        static var previews: some View {
-            FilterOptionsView()
-        }
+struct FilterOptionsView_Previews: PreviewProvider {
+    static var previews: some View {
+        FilterOptionsView()
+            .environmentObject(EpisodeStore())
     }
+}

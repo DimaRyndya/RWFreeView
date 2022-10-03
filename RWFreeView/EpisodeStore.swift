@@ -15,7 +15,7 @@ final class EpisodeStore: ObservableObject, Decodable {
         "beginner": true,
         "intermediate": false
     ]
-
+    
     @Published var loading = false
     
     func queryDomain(_ id: String) -> URLQueryItem {
@@ -37,7 +37,7 @@ final class EpisodeStore: ObservableObject, Decodable {
         "beginner": "Beginner",
         "intermediate": "Intermediate"
     ]
-
+    
     let baseURLString = "https://api.raywenderlich.com/api/contents"
     var baseParams = [
         "filter[subscription_types][]": "free",
@@ -46,20 +46,39 @@ final class EpisodeStore: ObservableObject, Decodable {
         "page[size]": "20",
         "filter[q]": ""
     ]
-
+    
     func fetchContents() {
         guard var urlComponents = URLComponents(string: baseURLString)
         else { return }
         urlComponents.setQueryItems(with: baseParams)
+        let selectedDomains = domainFilters.filter {
+            $0.value
+        }
+            .keys
+        let domainQueryItems = selectedDomains.map {
+            queryDomain($0)
+        }
+        
+        let selectedDifficulties = difficultyFilters.filter {
+            $0.value
+        }
+            .keys
+        let difficultyQueryItems = selectedDifficulties.map {
+            queryDifficulty($0)
+        }
+        
+        urlComponents.queryItems! += domainQueryItems
+        urlComponents.queryItems! += difficultyQueryItems
         guard let contentsURL = urlComponents.url else { return }
+        print(contentsURL)
         loading = true
         
         URLSession.shared
             .dataTask(with: contentsURL) { data, response, error in
                 defer {
-                  DispatchQueue.main.async {
-                    self.loading = false
-                  }
+                    DispatchQueue.main.async {
+                        self.loading = false
+                    }
                 }
                 if let data = data,
                    let response = response as? HTTPURLResponse {
@@ -78,21 +97,28 @@ final class EpisodeStore: ObservableObject, Decodable {
             }
             .resume()
     }
-
+    
+    func clearQueryFilters() {
+        domainFilters.keys.forEach { domainFilters[$0] = false }
+        difficultyFilters.keys.forEach {
+            difficultyFilters[$0] = false
+        }
+    }
+    
     init() {
         fetchContents()
     }
-
-
+    
+    
     enum CodingKeys: String, CodingKey {
         case episodes = "data"   // array of dictionary
     }
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(
             keyedBy: CodingKeys.self)
         episodes = try container.decode(
             [Episode].self, forKey: .episodes)
     }
-
+    
 }
