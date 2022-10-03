@@ -24,6 +24,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 HeaderView(count: store.episodes.count)
+                if store.loading { ActivityIndicator() }
                 ForEach(store.episodes) { episode in
                     ZStack {
                         NavigationLink(destination: PlayerView(episode: episode)) {

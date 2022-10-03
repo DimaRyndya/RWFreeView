@@ -20,6 +20,13 @@ horizontalSizeClass: UserInterfaceSizeClass?
                     .font(.headline)
                     .fontWeight(.bold)
                     .foregroundColor(Color(UIColor.label))
+                if episode.name == "Introduction" ||
+                  episode.name == "Conclusion" {
+                  Text(episode.parentName ?? "")
+                    .font(.subheadline)
+                    .foregroundColor(Color(UIColor.label))
+                    .padding(.top, -5.0)
+                }
                 AdaptingStack {
                     Text(episode.released + "  ")
                     Text(episode.domain + "  ")

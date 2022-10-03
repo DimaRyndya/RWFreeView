@@ -80,6 +80,7 @@ extension Episode {
         if let domainId = domains.data.first?["id"] {  // 5
             self.domain = Episode.domainDictionary[domainId] ?? ""
         }
+        let parentName = try attrs.decode(String?.self, forKey: .parentName)
 
         self.id = id
         self.uri = uri
@@ -91,5 +92,6 @@ extension Episode {
         if let videoId = videoIdentifier {
             self.videoURL = VideoURL(videoId: videoId)
         }
+        self.parentName = parentName
     }
 }

@@ -15,6 +15,8 @@ final class EpisodeStore: ObservableObject, Decodable {
         "beginner": true,
         "intermediate": false
     ]
+
+    @Published var loading = false
     
     func queryDomain(_ id: String) -> URLQueryItem {
         URLQueryItem(name: "filter[domain_ids][]", value: id)
@@ -50,9 +52,15 @@ final class EpisodeStore: ObservableObject, Decodable {
         else { return }
         urlComponents.setQueryItems(with: baseParams)
         guard let contentsURL = urlComponents.url else { return }
-
+        loading = true
+        
         URLSession.shared
             .dataTask(with: contentsURL) { data, response, error in
+                defer {
+                  DispatchQueue.main.async {
+                    self.loading = false
+                  }
+                }
                 if let data = data,
                    let response = response as? HTTPURLResponse {
                     print(response.statusCode)
