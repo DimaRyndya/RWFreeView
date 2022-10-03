@@ -22,6 +22,9 @@
 		1D737A9228EB2D210008CE9C /* RWFreeViewWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D737A9128EB2D210008CE9C /* RWFreeViewWidget.swift */; };
 		1D737A9428EB2D230008CE9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D737A9328EB2D230008CE9C /* Assets.xcassets */; };
 		1D737A9828EB2D230008CE9C /* RWFreeViewWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1D737A8A28EB2D200008CE9C /* RWFreeViewWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1D737A9D28EB34B00008CE9C /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D737A8228EACF3A0008CE9C /* Episode.swift */; };
+		1D737A9E28EB34F70008CE9C /* VideoURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D737A8428EAD04E0008CE9C /* VideoURL.swift */; };
+		1D737A9F28EB34FC0008CE9C /* FormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D737A7E28EAC3FC0008CE9C /* FormatterExtension.swift */; };
 		CD304C7125A2D34900FD0E2C /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD304C7025A2D34900FD0E2C /* PlayerView.swift */; };
 		CD34211A25A5771000817FD8 /* PlayButtonIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD34211925A5771000817FD8 /* PlayButtonIcon.swift */; };
 		CD34211F25A6BCDC00817FD8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD34211E25A6BCDC00817FD8 /* ColorExtension.swift */; };
@@ -73,7 +76,7 @@
 		1D737A8A28EB2D200008CE9C /* RWFreeViewWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RWFreeViewWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D737A8C28EB2D200008CE9C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		1D737A8E28EB2D210008CE9C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		1D737A9128EB2D210008CE9C /* RWFreeViewWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWFreeViewWidget.swift; sourceTree = "<group>"; };
+		1D737A9128EB2D210008CE9C /* RWFreeViewWidget.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = RWFreeViewWidget.swift; sourceTree = "<group>"; };
 		1D737A9328EB2D230008CE9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D737A9528EB2D230008CE9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD304C7025A2D34900FD0E2C /* PlayerView.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -345,7 +348,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D737A9F28EB34FC0008CE9C /* FormatterExtension.swift in Sources */,
 				1D737A9228EB2D210008CE9C /* RWFreeViewWidget.swift in Sources */,
+				1D737A9D28EB34B00008CE9C /* Episode.swift in Sources */,
+				1D737A9E28EB34F70008CE9C /* VideoURL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +503,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = RWFreeView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -518,6 +525,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = RWFreeView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -542,7 +550,7 @@
 				INFOPLIST_FILE = RWFreeViewWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RWFreeViewWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Ray Wenderlich. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -571,7 +579,7 @@
 				INFOPLIST_FILE = RWFreeViewWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RWFreeViewWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Ray Wenderlich. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
