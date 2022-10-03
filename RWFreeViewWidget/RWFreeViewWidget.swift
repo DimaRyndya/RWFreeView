@@ -46,10 +46,43 @@ struct SimpleEntry: TimelineEntry {
 }
 
 struct RWFreeViewWidgetEntryView : View {
+    @Environment(\.widgetFamily) var family
+
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                PlayButtonIcon(width: 50, height: 50, radius: 10)
+                    .unredacted()
+                VStack(alignment: .leading) {
+                    Text(entry.episode.name)
+                        .font(.headline)
+                        .fontWeight(.bold)
+                    if family != .systemSmall {
+                        HStack {
+                            Text(entry.episode.released + "  ")
+                            Text(entry.episode.domain + "  ")
+                            Text(String(entry.episode.difficulty ?? "")
+                                .capitalized)
+                        }
+                    } else {
+                        Text(entry.episode.released + "  ")
+                    }
+                }
+            }
+            .foregroundColor(Color(UIColor.label))
+
+            if family != .systemSmall {
+                Text(entry.episode.description)
+                    .lineLimit(2)
+            }
+        }
+        .padding(.horizontal)
+        .background(Color.itemBkgd)
+        .font(.footnote)
+        .foregroundColor(Color(UIColor.systemGray))
+
     }
 }
 
@@ -66,13 +99,20 @@ struct RWFreeViewWidget: Widget {
         }
         .configurationDisplayName("RW Free View")
         .description("View free raywenderlich.com video episodes.")
+        .supportedFamilies([.systemMedium])
     }
 }
 
 
 struct RWFreeViewWidget_Previews: PreviewProvider {
     static var previews: some View {
-        RWFreeViewWidgetEntryView(entry: SimpleEntry(date: Date(), episode: Provider().sampleEpisode))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        let view = RWFreeViewWidgetEntryView(
+            entry: SimpleEntry(
+                date: Date(),
+                episode: Provider().sampleEpisode))
+        view.previewContext(WidgetPreviewContext(family: .systemSmall))
+        view.previewContext(WidgetPreviewContext(family: .systemMedium))
+        view.previewContext(WidgetPreviewContext(family: .systemLarge))
+
     }
 }
