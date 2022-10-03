@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var store: EpisodeStore
     @State private var showFilters = false
-
+    
     init() {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColor(named: "top-bkgd")
@@ -18,7 +18,7 @@ struct ContentView: View {
         UISegmentedControl.appearance()
             .selectedSegmentTintColor = UIColor(named: "list-bkgd")
     }
-
+    
     
     var body: some View {
         NavigationView {

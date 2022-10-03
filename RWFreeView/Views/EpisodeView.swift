@@ -2,11 +2,11 @@ import SwiftUI
 
 struct EpisodeView: View {
     @Environment(\.verticalSizeClass) var
-      verticalSizeClass: UserInterfaceSizeClass?
+verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var
-      horizontalSizeClass: UserInterfaceSizeClass?
+horizontalSizeClass: UserInterfaceSizeClass?
     var isIPad: Bool {
-      horizontalSizeClass == .regular &&
+        horizontalSizeClass == .regular &&
         verticalSizeClass == .regular
     }
 

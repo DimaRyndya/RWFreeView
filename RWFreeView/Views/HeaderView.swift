@@ -19,10 +19,10 @@ struct HeaderView: View {
             HStack {
                 Text("\(count) Episodes")
                 Menu("\(Image(systemName: "filemenu.and.cursorarrow"))") {
-                  Button("10 results/page") { }
-                  Button("20 results/page") { }
-                  Button("30 results/page") { }
-                  Button("No change") { }
+                    Button("10 results/page") { }
+                    Button("20 results/page") { }
+                    Button("30 results/page") { }
+                    Button("No change") { }
                 }
                 Spacer()
                 Picker("", selection: $sortOn) {

@@ -1,8 +1,8 @@
 import Foundation
 
 public extension URLComponents {
-  // convert queryItems to params with name and value
-  mutating func setQueryItems(with parameters: [String: String]) {
-    self.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
-  }
+    // convert queryItems to params with name and value
+    mutating func setQueryItems(with parameters: [String: String]) {
+        self.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
+    }
 }

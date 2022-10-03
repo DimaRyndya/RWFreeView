@@ -36,10 +36,10 @@ class EpisodeStore: ObservableObject {
         "intermediate": "Intermediate"
     ]
     
+    func fetchContents() {}
+
     init() {
-#if DEBUG
-        createDevData()
-#endif
+      fetchContents()
     }
 }
 
