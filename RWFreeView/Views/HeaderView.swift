@@ -5,17 +5,49 @@ struct HeaderView: View {
     @State private var queryTerm = ""
     @State private var sortOn = "none"
     @EnvironmentObject var store: EpisodeStore
+
+    let threeColumns = [
+        GridItem(.flexible(minimum: 55)),
+        GridItem(.flexible(minimum: 55)),
+        GridItem(.flexible(minimum: 55))
+    ]
+
     
     var body: some View {
         VStack {
             SearchField(queryTerm: $queryTerm)
             HStack {
-                Button("Clear all") { }
-                    .buttonStyle(HeaderButtonStyle())
-                Button("iOS & Swift") { }
-                    .buttonStyle(HeaderButtonStyle())
-                Spacer()
+              LazyVGrid(columns: threeColumns) {  // 1
+                Button("Clear all") {
+                  queryTerm = ""
+                  store.baseParams["filter[q]"] = queryTerm
+                  store.clearQueryFilters()
+                  store.fetchContents()
+                }
+                .buttonStyle(HeaderButtonStyle())
+                ForEach(
+                  Array(
+                    store.domainFilters.merging(  // 2
+                      store.difficultyFilters) { _, second in second
+                    }
+                    .filter {  // 3
+                      $0.value
+                    }
+                    .keys), id: \.self) { key in
+                  Button(store.filtersDictionary[key]!) {  // 4
+                    if Int(key) == nil {  // 5
+                      store.difficultyFilters[key]!.toggle()
+                    } else {
+                      store.domainFilters[key]!.toggle()
+                    }
+                    store.fetchContents()  // 6
+                  }
+                  .buttonStyle(HeaderButtonStyle())
+                }
+              }
+              Spacer()
             }
+
             HStack {
                 Text("\(count) Episodes")
                 Menu("\(Image(systemName: "filemenu.and.cursorarrow"))") {
@@ -46,7 +78,6 @@ struct HeaderView: View {
                     "-released_at" : "-popularity"
                     store.fetchContents()
                 }
-
             }
             .foregroundColor(Color.white.opacity(0.6))
         }
@@ -109,5 +140,6 @@ struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
         HeaderView(count: 42)
             .previewLayout(.sizeThatFits)
+            .environmentObject(EpisodeStore())
     }
 }
