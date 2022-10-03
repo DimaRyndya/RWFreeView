@@ -28,6 +28,8 @@
 		1D737AA028EB398E0008CE9C /* PlayButtonIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD34211925A5771000817FD8 /* PlayButtonIcon.swift */; };
 		1D737AA128EB39930008CE9C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD34211E25A6BCDC00817FD8 /* ColorExtension.swift */; };
 		1D737AA228EB399C0008CE9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
+		1D737AA328EB3C6C0008CE9C /* EpisodeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD95699925A1663D000206E7 /* EpisodeStore.swift */; };
+		1D737AA428EB3C710008CE9C /* URLComponentsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D737A7C28EAC3090008CE9C /* URLComponentsExtension.swift */; };
 		CD304C7125A2D34900FD0E2C /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD304C7025A2D34900FD0E2C /* PlayerView.swift */; };
 		CD34211A25A5771000817FD8 /* PlayButtonIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD34211925A5771000817FD8 /* PlayButtonIcon.swift */; };
 		CD34211F25A6BCDC00817FD8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD34211E25A6BCDC00817FD8 /* ColorExtension.swift */; };
@@ -357,6 +359,8 @@
 				1D737A9D28EB34B00008CE9C /* Episode.swift in Sources */,
 				1D737AA128EB39930008CE9C /* ColorExtension.swift in Sources */,
 				1D737AA028EB398E0008CE9C /* PlayButtonIcon.swift in Sources */,
+				1D737AA428EB3C710008CE9C /* URLComponentsExtension.swift in Sources */,
+				1D737AA328EB3C6C0008CE9C /* EpisodeStore.swift in Sources */,
 				1D737A9E28EB34F70008CE9C /* VideoURL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

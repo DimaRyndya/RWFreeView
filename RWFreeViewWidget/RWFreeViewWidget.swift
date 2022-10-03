@@ -2,6 +2,9 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: TimelineProvider {
+
+    let store = EpisodeStore()
+
     let sampleEpisode = Episode(
         id: "5117655",
         uri: "rw://betamax/videos/3021",
@@ -29,10 +32,16 @@ struct Provider: TimelineProvider {
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, episode: sampleEpisode)
-            entries.append(entry)
+        let interval = 3
+        for index in 0 ..< store.episodes.count {
+          let entryDate = Calendar.current.date(
+            byAdding: .second,
+            value: index * interval,
+            to: currentDate)!
+          let entry = SimpleEntry(
+            date: entryDate,
+            episode: store.episodes[index])
+          entries.append(entry)
         }
 
         let timeline = Timeline(entries: entries, policy: .atEnd)
