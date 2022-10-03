@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var store = EpisodeStore()
+    @EnvironmentObject var store: EpisodeStore
     @State private var showFilters = false
 
     init() {
@@ -63,5 +63,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(EpisodeStore())
     }
 }

@@ -4,6 +4,7 @@ struct HeaderView: View {
     let count: Int
     @State private var queryTerm = ""
     @State private var sortOn = "popular"
+    @EnvironmentObject var store: EpisodeStore
     
     var body: some View {
         VStack {
