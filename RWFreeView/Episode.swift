@@ -95,3 +95,13 @@ extension Episode {
         self.parentName = parentName
     }
 }
+
+struct MiniEpisode: Codable {
+  let id: String
+  let name: String
+  let released: String
+  let domain: String
+  let difficulty: String
+  let description: String
+}
+

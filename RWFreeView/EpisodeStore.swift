@@ -28,6 +28,23 @@ final class EpisodeStore: ObservableObject, Decodable {
     ]
     
     @Published var loading = false
+
+    var miniEpisodes: [MiniEpisode] = []
+
+    func writeEpisodes() {
+        let archiveURL = FileManager.sharedContainerURL()
+            .appendingPathComponent("episodes.json")
+        print(">>> \(archiveURL)")
+
+        if let dataToSave = try? JSONEncoder().encode(miniEpisodes) {
+            do {
+                try dataToSave.write(to: archiveURL)
+            } catch {
+                print("Error: Can’t write episodes")
+            }
+        }
+    }
+
     
     func queryDomain(_ id: String) -> URLQueryItem {
         URLQueryItem(name: "filter[domain_ids][]", value: id)
@@ -98,6 +115,16 @@ final class EpisodeStore: ObservableObject, Decodable {
                     if let decodedResponse = try? JSONDecoder().decode(
                         EpisodeStore.self, from: data) {
                         DispatchQueue.main.async {
+                            self.miniEpisodes = self.episodes.map {
+                              MiniEpisode(
+                                id: $0.id,
+                                name: $0.name,
+                                released: $0.released,
+                                domain: $0.domain,
+                                difficulty: $0.difficulty ?? "",
+                                description: $0.description)
+                            }
+                            self.writeEpisodes()
                             self.episodes = decodedResponse.episodes
                         }
                         return

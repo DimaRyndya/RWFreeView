@@ -3,20 +3,16 @@ import SwiftUI
 
 struct Provider: TimelineProvider {
 
-    let store = EpisodeStore()
 
-    let sampleEpisode = Episode(
+    let sampleEpisode = MiniEpisode(
         id: "5117655",
-        uri: "rw://betamax/videos/3021",
         name: "SwiftUI vs. UIKit",
         released: "Sept 2019",
+        domain: "iOS & Swift",
         difficulty: "beginner",
         description: "Learn about the differences between SwiftUI and"
         + "UIKit, and whether you should learn SwiftUI, UIKit, or "
-        + "both.\n" ,
-        parentName: nil,
-        domain: "iOS & Swift")
-
+        + "both.\n")
 
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), episode: sampleEpisode)
@@ -33,25 +29,46 @@ struct Provider: TimelineProvider {
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         let interval = 3
-        for index in 0 ..< store.episodes.count {
-          let entryDate = Calendar.current.date(
-            byAdding: .second,
-            value: index * interval,
-            to: currentDate)!
-          let entry = SimpleEntry(
-            date: entryDate,
-            episode: store.episodes[index])
-          entries.append(entry)
+        let episodes = readEpisodes()
+        for index in 0 ..< episodes.count {
+            let entryDate = Calendar.current.date(
+                byAdding: .second,
+                value: index * interval,
+                to: currentDate)!
+            let entry = SimpleEntry(
+                date: entryDate,
+                episode: episodes[index])
+            entries.append(entry)
         }
+
 
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
+
+    func readEpisodes() -> [MiniEpisode] {
+        var episodes: [MiniEpisode] = []
+        let archiveURL =
+        FileManager.sharedContainerURL()
+            .appendingPathComponent("episodes.json")
+        print(">>> \(archiveURL)")
+
+        if let codeData = try? Data(contentsOf: archiveURL) {
+            do {
+                episodes = try JSONDecoder()
+                    .decode([MiniEpisode].self, from: codeData)
+            } catch {
+                print("Error: Can’t decode contents")
+            }
+        }
+        return episodes
+    }
+
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let episode: Episode
+    let episode: MiniEpisode
 }
 
 struct RWFreeViewWidgetEntryView : View {
@@ -72,7 +89,7 @@ struct RWFreeViewWidgetEntryView : View {
                         HStack {
                             Text(entry.episode.released + "  ")
                             Text(entry.episode.domain + "  ")
-                            Text(String(entry.episode.difficulty ?? "")
+                            Text(String(entry.episode.difficulty)
                                 .capitalized)
                         }
                     } else {
